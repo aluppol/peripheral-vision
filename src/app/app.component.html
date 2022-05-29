@@ -1,0 +1,54 @@
+<div class="background">
+
+  <play-svg *ngIf="state === TrainerStates.setup" class="btn btn--play" (click)="handlePlay()"></play-svg>
+  <stop-svg *ngIf="state ===  TrainerStates.play" class="btn btn--stop" (click)="handleStop()"></stop-svg>
+
+  <div *ngIf="state === TrainerStates.setup" class="controls controls--horizontal controls--center-top">
+    <div class="btn btn--control" (click)="handleControl('columnsAmount', 'decrease')"><span>-</span></div>
+    <div class="btn btn--control" (click)="handleControl('columnsAmount', 'increase')"><span>+</span></div>
+  </div>
+
+  <div *ngIf="state === TrainerStates.setup" class="controls controls--vertical controls--left-center">
+    <div class="btn btn--control" (click)="handleControl('rowsAmount', 'increase')"><span>+</span></div>
+    <div class="btn btn--control" (click)="handleControl('rowsAmount', 'decrease')"><span>-</span></div>
+  </div>
+
+  <div *ngIf="state === TrainerStates.setup" class="controls controls--scale  controls--vertical controls--right-bottom">
+    <div class="btn btn--control" (click)="handleControl('squareSide', 'increase', 5)"><zoom-in-svg></zoom-in-svg></div>
+    <div class="btn btn--control" (click)="handleControl('squareSide', 'decrease', 5)"><zoom-out-svg></zoom-out-svg></div>
+  </div>
+
+
+  <div *ngIf="time && state === TrainerStates.setup" class="time">
+    Your time: {{time | msToTime}}
+  </div>
+
+
+  <div
+    #squares
+    [ngStyle]="{
+      'grid-template-columns': 'repeat(' + columnsAmount + ', 1fr)'
+    }"
+    class="squares"
+  >
+    <div
+      *ngFor="let num of numbers"
+      [ngClass]="{
+        'square': true,
+        'square--selected': num < currentNumber
+      }"
+      [ngStyle]="{
+        'height': squareSide + 'px',
+        'width': squareSide + 'px',
+        'font-size': squareSide * 0.5 + 'px'
+      }"
+      (click)="handleSquareSelection(num, $event.target)"
+    >
+      <div class="square__num">{{num}}</div>
+    </div>
+  </div>
+
+
+</div>
+
+<ng-template #square></ng-template>

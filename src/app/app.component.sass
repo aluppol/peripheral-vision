@@ -1,0 +1,120 @@
+.background
+  position: relative
+  width: 100vw
+  height: 100vh
+
+.squares
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+  display: grid
+  border: 0.5px solid black
+
+.square
+  border: 0.5px solid black
+  transition: all 0.3s ease-out
+  cursor: pointer
+  position: relative
+
+  &--right
+    background-color: #00ff3c8b
+
+  &--wrong
+    background-color: #ff00008b
+
+  &--answered
+    color: #005915
+
+  &__num
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    z-index: -1
+
+
+.btn
+  cursor: pointer
+  -moz-user-select: none
+  -khtml-user-select: none
+  -webkit-user-select: none
+
+  &--play
+    position: absolute
+    left: 10px
+    top: 10px
+    width: 60px
+    height: 50px
+
+    &:hover, &:focus svg path
+      fill: #08ff94
+
+    &:active svg path
+      fill: #00a806
+
+  &--stop
+    position: absolute
+    left: 10px
+    top: 10px
+    width: 60px
+    height: 50px
+
+    &:hover, &:focus svg path
+      fill: #ff0808
+
+    &:active svg path
+      fill: #a80000
+
+  &--control
+    font-size: 30px
+    line-height: 0.9
+    border: 1px solid lightgrey
+    margin: 5px
+    padding: 5px
+    width: 30px
+    height: 30px
+    text-align: center
+    vertical-align: center
+    display: flex
+    align-content: center
+    justify-content: center
+    border-radius: 10%
+
+    &:active, &:focus, &:hover
+      background: lightgrey
+
+.time
+  position: absolute
+  top: 10px
+  right: 10px
+  color: green
+  font-size: 20px
+
+
+.controls
+  display: flex
+
+  &--vertical
+    flex-direction: column
+
+  &--horizontal
+    flex-direction: row
+
+  &--left-center
+    position: absolute
+    left: 10px
+    top: 50%
+    transform: translate(0, -50%)
+
+  &--center-top
+    position: absolute
+    top: 10px
+    left: 50%
+    transform: translate(-50%, 0)
+
+  &--right-bottom
+    position: absolute
+    right: 10px
+    bottom: 10px
