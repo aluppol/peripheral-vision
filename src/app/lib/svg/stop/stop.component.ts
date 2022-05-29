@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'stop-svg',
-  templateUrl: './stop.component.html',
-  styleUrls: ['./stop.component.sass']
+  templateUrl: './stop.component.html'
 })
 export class StopComponent {}
